@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carta de Amor con Sorpresa</title>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #bd687c, #ffe6f7);
+      font-family: 'Roboto', sans-serif;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      text-align: center;
+    }
+    h1 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 8vw;
+      color: #c42b60;
+      margin-top: 5vh;
+    }
+    button {
+      padding: 15px 30px;
+      font-size: 4vw;
+      background: #ff6f91;
+      border: none;
+      border-radius: 50px;
+      color: #fff;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+      transition: transform 0.2s;
+      margin-top: 5vh;
+    }
+    button:hover { transform: scale(1.05); }
+    #envelopeContainer, #snoopyContainer, #letter { display: none; }
+    #envelope {
+      width: 60vw;
+      max-width: 220px;
+      height: 150px;
+      background: #fff;
+      border: 2px solid #ff6f91;
+      border-radius: 10px;
+      position: relative;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      margin: 5vh auto;
+    }
+    #envelope::before {
+      content: "";
+      position: absolute;
+      top: -25px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-left: 115px solid transparent;
+      border-right: 115px solid transparent;
+      border-bottom: 25px solid #fff;
+    }
+    #envelope::after {
+      content: "❤️";
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      font-size: 24px;
+    }
+    #snoopyImage {
+      width: 70vw;
+      max-width: 300px;
+      transition: opacity 1s ease;
+    }
+    .fade-out { opacity: 0; }
+    #letter {
+      width: 85vw;
+      max-width: 700px;
+      padding: 5vw;
+      background: #fff;
+      border: 3px solid #ff6f91;
+      border-radius: 15px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+  <h1>Carta de Amor</h1>
+  <button id="readLetterBtn">Leer carta</button>
+  <div id="envelopeContainer">
+    <p>¡Toca el sobre! ❤️</p>
+    <div id="envelope"></div>
+  </div>
+  <div id="snoopyContainer">
+    <img id="snoopyImage" src="https://i.pinimg.com/736x/19/cc/93/19cc9398e989230dd72691d4be59950b.jpg" alt="Snoopy">
+  </div>
+  <div id="letter">
+    <p>Mi amor, mi niña más hermosa del mundo...</p>
+  </div>
+  <script>
+    document.getElementById('readLetterBtn').addEventListener('click', function() {
+      this.style.display = 'none';
+      document.getElementById('envelopeContainer').style.display = 'block';
+    });
+    document.getElementById('envelope').addEventListener('click', function() {
+      document.getElementById('envelopeContainer').style.display = 'none';
+      document.getElementById('snoopyContainer').style.display = 'block';
+      setTimeout(() => {
+        document.getElementById('snoopyImage').classList.add('fade-out');
+        setTimeout(() => {
+          document.getElementById('snoopyContainer').style.display = 'none';
+          document.getElementById('letter').style.display = 'block';
+        }, 1000);
+      }, 2000);
+    });
+  </script>
+</body>
+</html>
